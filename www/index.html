@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Amul Ads</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="js/app.js"></script>
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="cordova.js"></script>
+  </head>
+  <body ng-app="amulads" ng-controller="AmulCtrl">
+    <ion-side-menus>
+      <!-- Center content -->
+      <ion-side-menu-content>
+        <ion-header-bar class="bar-positive">
+          <h1 class="title">Amul Ads</h1>
+        </ion-header-bar>
+        <ion-content>
+        <div ng-controller="AmulCtrl">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Year
+            </div>
+            <select ng-options="set as set.year for set in yeargroups"
+                    ng-model="selyear" ng-change="update()">
+            </select>
+            <h2>{{selyear.year}}</h2>
+          </label>
+          <!-- our list and list items -->
+          <ion-list>
+            <ion-item ng-repeat="ad in selyear.topicals">
+            <figure>
+              <img src="http://www.amul.com{{ad.src}}" alt="{{ad.alt}}" title="{{ad.title}}" style="max-width: 100%; height: auto; display: block; margin: auto; padding: 5px;">
+              <figcaption style="display: block; text-align: center; font-weight: bold;">{{ad.description}}</figcaption>
+            </figure>
+            </ion-item>
+          </ion-list>
+        </div>
+        </ion-content>
+      </ion-side-menu-content>
+
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+        <ion-header-bar class="bar-dark">
+          <h1 class="title">Amul Ads</h1>
+        </ion-header-bar>
+      </ion-side-menu>
+    </ion-side-menus>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+node_modules/
+*~
+.tmp
+.sass-cache
+.DS_Store
+<%= appPath %>/bower_components
+coverage
+platforms
+plugins
